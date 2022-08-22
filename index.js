@@ -114,6 +114,7 @@ const ADVENTURE = new Deva({
     world(packet) {
       return this.func.view(packet);
     },
+
     /**************
     method: object
     params: packet
@@ -122,6 +123,7 @@ const ADVENTURE = new Deva({
     object(packet) {
       return this.func.view(packet);
     },
+
     /**************
     method: agent
     params: packet
