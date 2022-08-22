@@ -1,4 +1,5 @@
 // Copyright (c)2022 Quinn Michaels
+// The Adventure Deva
 const fs = require('fs');
 const path = require('path');
 
@@ -27,6 +28,12 @@ const ADVENTURE = new Deva({
   modules: {},
   deva: {},
   func: {
+    /**************
+    func: getAdvFile
+    params: opts - optsion object
+    describe: The getAdvFile function will take a string and then pull the corresponding
+    adventure file from the designated location set in the data.config file.
+    ***************/
     getAdvFile(opts) {
       let advFile, advPath, dir1, dir2
       const thing = opts.meta.params[0];
@@ -67,6 +74,13 @@ const ADVENTURE = new Deva({
       });
     },
 
+    /**************
+    func: view
+    params: data
+    describe: The view function will pass in a data object that will then call the
+    getAdvFile function to pull the profper adventure file then pass it off to
+    feecting for parsing before return.
+    ***************/
     view(data) {
       return new Promise((resolve, reject) => {
         this.func.getAdvFile(data.q).then(advFile => {
@@ -80,38 +94,66 @@ const ADVENTURE = new Deva({
         });
       });
     },
-    world(packet) {
-      return this.func.view(packet);
-    },
-    object(packet) {
-      return this.func.view(packet);
-    },
-    agent(packet) {
-      return this.func.view(packet);
-    },
+  },
+  methods: {
+    /**************
+    method: hash
+    params: packet
+    describe: The hash method exposes the hash function which calls the core
+    hash features to become available to the Adventure Deva.
+    ***************/
     hash(packet) {
       return this.hash(packet);
     },
-  },
-  methods: {
-    hash(packet) {
-      return this.func.hash(packet);
-    },
+
+    /**************
+    method: world
+    params: packet
+    describe: Call a world file from the adventure server.
+    ***************/
     world(packet) {
-      return this.func.world(packet);
+      return this.func.view(packet);
     },
+    /**************
+    method: object
+    params: packet
+    describe: Call an objext file from the adventure server
+    ***************/
     object(packet) {
-      return this.func.object(packet);
+      return this.func.view(packet);
     },
+    /**************
+    method: agent
+    params: packet
+    describe: Call an Agent file from the adventure server
+    ***************/
     agent(packet) {
-      return this.func.agent(packet);
+      return this.func.view(packet);
     },
+
+    /**************
+    method: uid
+    params: packet
+    describe: Return a system uid to the Adventure Deva.
+    ***************/
     uid(packet) {
       return Promise.resolve(this.uid());
     },
+
+    /**************
+    method: status
+    params: packet
+    describe: Return the current status of the Adventure Deva.
+    ***************/
     status(packet) {
       return this.status();
     },
+
+    /**************
+    method: help
+    params: packet
+    describe: Read the help files for the Adventure Deva method.
+    ***************/
     help(packet) {
       return new Promise((resolve, reject) => {
         this.lib.help(packet.q.text, __dirname).then(help => {
