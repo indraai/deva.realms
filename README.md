@@ -1,4 +1,6 @@
 # AdvDeva
 The Adventure Deva
 
-`const adv = require('@feecting/advdeva')`;
+`npm i @indra.ai/advdeva`
+
+`const adv = require('@indra.ai/advdeva')`;

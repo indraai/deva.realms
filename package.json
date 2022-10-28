@@ -1,5 +1,5 @@
 {
-  "name": "@feecting/advdeva",
+  "name": "@indra.ai/advdeva",
   "version": "0.0.7",
   "description": "The Adventure Deva",
   "main": "index.js",
@@ -20,7 +20,7 @@
     "url": "https://github.com/indraai/AdvDeva/issues"
   },
   "dependencies": {
-    "@feecting/deva": "^1.0.25"
+    "@indra.ai/deva": "^1.0.25"
   },
   "homepage": "https://github.com/indraai/AdvDeva#readme"
 }
