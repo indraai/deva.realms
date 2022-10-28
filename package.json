@@ -1,6 +1,6 @@
 {
   "name": "@indra.ai/advdeva",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "The Adventure Deva",
   "main": "index.js",
   "scripts": {
