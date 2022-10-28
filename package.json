@@ -1,6 +1,6 @@
 {
   "name": "@feecting/advdeva",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "The Adventure Deva",
   "main": "index.js",
   "scripts": {
