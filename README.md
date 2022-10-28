@@ -1,6 +1,6 @@
 # AdvDeva
 
-The Adventure Deva
+The Adventure Deva that uses deva.space.
 
 `npm i @indra.ai/advdeva --save-dev`
 
