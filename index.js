@@ -60,7 +60,7 @@ const ADVENTURE = new Deva({
         default:
           dir1 = room.substr(0, room.length - 3) + 'xxx';
           dir2 = room.substr(0, room.length - 2) + 'xx';
-          advPath = `${this.vars.url}/${adv}/${thing}/${dir1}/${dir2}/${room}/${doc}.feecting`;
+          advPath = `${this.client.services.space}/${adv}/${thing}/${dir1}/${dir2}/${room}/${doc}.feecting`;
 
           this.question(`#web get ${advPath}`).then(result => {
             const text = result.a.text.toString('utf8').split(`::BEGIN:${section}`)[1].split(`::END:${section}`)[0];
