@@ -1,6 +1,6 @@
-## Adventure Deva
+## Space Deva
 
-p:The Adventure Deva handles calling the adventure fules from the remote servers.
+p:The Space Deva handles calling the adventure fules from the remote servers.
 
 ### Methods
 
@@ -26,11 +26,11 @@ p:Call an agent template from an adventure server.
 format:#adv agent:*adventure* *id*/*template*:*part*
 
 #### uid
-p:Generate a uid from the Adventure Deva.
+p:Generate a uid from the Space Deva.
 cmd:#adv uid
 
 #### status
-p:View the status of the Adventure Deva since coming online.
+p:View the status of the Space Deva since coming online.
 cmd:#adv status
 
 #color = var(--color-orange)

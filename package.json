@@ -1,14 +1,14 @@
 {
-  "name": "@indra.ai/advdeva",
+  "name": "@indra.ai/spacedeva",
   "version": "0.0.13",
-  "description": "The Adventure Deva",
+  "description": "The Space Deva",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/indraai/AdvDeva.git"
+    "url": "git+ssh://git@github.com/indraai/SpaceDeva.git"
   },
   "keywords": [
     "Adventure",
@@ -17,10 +17,10 @@
   "author": "Quinn Michaels",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/indraai/AdvDeva/issues"
+    "url": "https://github.com/indraai/SpaceDeva/issues"
   },
   "dependencies": {
     "@indra.ai/deva": "^1.0.25"
   },
-  "homepage": "https://github.com/indraai/AdvDeva#readme"
+  "homepage": "https://github.com/indraai/SpaceDeva#readme"
 }

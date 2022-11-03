@@ -1,7 +1,7 @@
 # AdvDeva
 
-The Adventure Deva that uses deva.space.
+The Space Deva that uses deva.space.
 
-`npm i @indra.ai/advdeva --save-dev`
+`npm i @indra.ai/spacedeva --save-dev`
 
-`const adv = require('@indra.ai/advdeva')`;
+`const adv = require('@indra.ai/spacedeva')`;

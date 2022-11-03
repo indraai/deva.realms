@@ -1,5 +1,5 @@
 // Copyright (c)2022 Quinn Michaels
-// The Adventure Deva
+// The Space Deva
 
 const fs = require('fs');
 const path = require('path');
@@ -8,7 +8,7 @@ const data_path = path.join(__dirname, 'data.json');
 const {agent,vars} = require(data_path).data;
 
 const Deva = require('@indra.ai/deva');
-const ADVENTURE = new Deva({
+const SPACE = new Deva({
   agent: {
     uid: agent.uid,
     key: agent.key,
@@ -30,15 +30,15 @@ const ADVENTURE = new Deva({
   deva: {},
   func: {
     /**************
-    func: getAdvFile
+    func: getSpaceFile
     params: opts - optsion object
-    describe: The getAdvFile function will take a string and then pull the corresponding
-    adventure file from the designated location set in the data.config file.
+    describe: The getSpaceFile function will take a string and then pull the corresponding
+    space file from the designated location set in the data.config file.
     ***************/
-    getAdvFile(opts) {
-      let advFile, advPath, dir1, dir2
+    getSpaceFile(opts) {
+      let spaceFile, spacePath, dir1, dir2
       const thing = opts.meta.params[0];
-      const adv = opts.meta.params[1];
+      const space = opts.meta.params[1];
       const ident = opts.text.split('/');
       let room = ident[0];
       const sec = ident[1] ? ident[1].split(':') : [];
@@ -54,21 +54,20 @@ const ADVENTURE = new Deva({
 
       switch (thing) {
         case 'help':
-          advPath = path.join(__dirname, 'data', adv, thing, `${data.text}.feecting`);
-          this.prompt(`ADV File: ${advPath}`);
-          return resolve(fs.readFileSync(advPath, 'utf8'));
+          spacePath = path.join(__dirname, 'data', space, thing, `${data.text}.feecting`);
+          return resolve(fs.readFileSync(spacePath, 'utf8'));
         default:
           dir1 = room.substr(0, room.length - 3) + 'xxx';
           dir2 = room.substr(0, room.length - 2) + 'xx';
-          advPath = `${this.client.services.space}/${adv}/${thing}/${dir1}/${dir2}/${room}/${doc}.feecting`;
+          spacePath = `${this.client.services.space}/${space}/${thing}/${dir1}/${dir2}/${room}/${doc}.feecting`;
 
-          this.question(`#web get ${advPath}`).then(result => {
+          this.question(`#web get ${spacePath}`).then(result => {
             const text = result.a.text.toString('utf8').split(`::BEGIN:${section}`)[1].split(`::END:${section}`)[0];
 
             resolve({
               text: text,
               html: text,
-              data: {advPath},
+              data: {spacePath},
             })
           }).catch(reject)
         }
@@ -79,13 +78,13 @@ const ADVENTURE = new Deva({
     func: view
     params: data
     describe: The view function will pass in a data object that will then call the
-    getAdvFile function to pull the profper adventure file then pass it off to
+    getSpaceFile function to pull the profper space file then pass it off to
     feecting for parsing before return.
     ***************/
     view(data) {
       return new Promise((resolve, reject) => {
-        this.func.getAdvFile(data.q).then(advFile => {
-          return this.question(`#feecting parse:${data.q.meta.params[0]}:${data.q.meta.params[1]} ${advFile.text}`);
+        this.func.getSpaceFile(data.q).then(spaceFile => {
+          return this.question(`#feecting parse:${data.q.meta.params[0]}:${data.q.meta.params[1]} ${spaceFile.text}`);
         }).then(parsed => {
           return resolve({
             text: parsed.a.text,
@@ -101,7 +100,7 @@ const ADVENTURE = new Deva({
     method: hash
     params: packet
     describe: The hash method exposes the hash function which calls the core
-    hash features to become available to the Adventure Deva.
+    hash features to become available to the space Deva.
     ***************/
     hash(packet) {
       return this.hash(packet);
@@ -110,7 +109,7 @@ const ADVENTURE = new Deva({
     /**************
     method: world
     params: packet
-    describe: Call a world file from the adventure server.
+    describe: Call a world file from the space server.
     ***************/
     world(packet) {
       return this.func.view(packet);
@@ -119,7 +118,7 @@ const ADVENTURE = new Deva({
     /**************
     method: object
     params: packet
-    describe: Call an objext file from the adventure server
+    describe: Call an objext file from the space server
     ***************/
     object(packet) {
       return this.func.view(packet);
@@ -128,7 +127,7 @@ const ADVENTURE = new Deva({
     /**************
     method: agent
     params: packet
-    describe: Call an Agent file from the adventure server
+    describe: Call an Agent file from the space server
     ***************/
     agent(packet) {
       return this.func.view(packet);
@@ -137,7 +136,7 @@ const ADVENTURE = new Deva({
     /**************
     method: uid
     params: packet
-    describe: Return a system uid to the Adventure Deva.
+    describe: Return a system uid to the space Deva.
     ***************/
     uid(packet) {
       return Promise.resolve(this.uid());
@@ -146,7 +145,7 @@ const ADVENTURE = new Deva({
     /**************
     method: status
     params: packet
-    describe: Return the current status of the Adventure Deva.
+    describe: Return the current status of the space Deva.
     ***************/
     status(packet) {
       return this.status();
@@ -155,7 +154,7 @@ const ADVENTURE = new Deva({
     /**************
     method: help
     params: packet
-    describe: Read the help files for the Adventure Deva method.
+    describe: Read the help files for the space Deva method.
     ***************/
     help(packet) {
       return new Promise((resolve, reject) => {
@@ -172,4 +171,4 @@ const ADVENTURE = new Deva({
     },
   },
 });
-module.exports = ADVENTURE
+module.exports = SPACE

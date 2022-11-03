@@ -1,16 +1,16 @@
 {
-  "name": "Adventure Deva Agent File",
-  "describe": "The main Agent file for Adventure Deva Deva.",
+  "name": "Space Deva Agent File",
+  "describe": "The main Agent file for Space Deva Deva.",
   "copyright": "Copyright (c)2022 Quinn Michaels. All rights reserved.",
   "data": {
     "agent": {
       "uid": "2839324349429",
-      "key": "adv",
-      "name": "Adv Deva",
-      "describe": "The Adventure Deva",
+      "key": "space",
+      "name": "Space Deva",
+      "describe": "The Space Deva",
       "prompt": {
-        "emoji": "🧗",
-        "text": "adv",
+        "emoji": "🪐",
+        "text": "space",
         "colors": {
           "label": {
             "R": 0,
@@ -29,10 +29,10 @@
         "speed": 1
       },
       "profile": {
-        "emoji": "/public/devas/adv/emoji.png",
-        "avatar": "/public/devas/adv/avatar.png",
+        "emoji": "/public/devas/space/emoji.png",
+        "avatar": "/public/devas/space/avatar.png",
         "background": "",
-        "describe": "Adventure Deva",
+        "describe": "Space Deva",
         "gender": "M"
       }
     },
@@ -45,7 +45,7 @@
         "exit": "🟡 EXIT",
         "done": "🟣 DONE",
         "error": "💣 ERROR!",
-        "advfile": "📁 Adventure File Unknown!"
+        "spacefile": "📁 Space File Unknown!"
       }
     }
   }
