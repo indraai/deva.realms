@@ -1,6 +1,6 @@
 {
   "name": "@indra.ai/spacedeva",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "The Space Deva",
   "main": "index.js",
   "scripts": {
