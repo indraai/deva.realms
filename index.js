@@ -102,10 +102,10 @@ const SPACE = new Deva({
     ***************/
     maps(packet) {
       const {params} = packet.q.meta;
-      const map = `img:${params[0].m}/map/${packet.q.text}`;
+      const map = `img:${params[0]}/map/${packet.q.text}`;
 
       return new Promise((resolve, reject) => {
-        this.question(`#feecting parse:${params[0]}:${params[1]} ${map}`).then(parsed => {
+        this.question(`#feecting parse ${map}`).then(parsed => {
           return resolve({
             text: parsed.a.text,
             html: parsed.a.html,
