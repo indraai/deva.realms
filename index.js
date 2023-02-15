@@ -163,6 +163,15 @@ const SPACE = new Deva({
     },
 
     /**************
+    method: docs
+    params: packet
+    describe: Call an Docs file from the space server
+    ***************/
+    docs(packet) {
+      return this.func.view(packet);
+    },
+
+    /**************
     method: uid
     params: packet
     describe: Return a system uid to the space Deva.
