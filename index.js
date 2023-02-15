@@ -50,7 +50,7 @@ const SPACE = new Deva({
           spacePath = `${this.client.services.space}/${space}/${thing}/${ident[0]}.feecting`;
           break;
         default:
-          const route - ident[0].split('/');
+          const route = ident[0].split('/');
           const doc = route[1];
           let room = route[0];
           room = room.length == 1 ? `000${room}` : room;
