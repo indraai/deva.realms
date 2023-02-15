@@ -36,29 +36,30 @@ const SPACE = new Deva({
     space file from the designated location set in the data.config file.
     ***************/
     getSpaceFile(opts) {
-      let spaceFile, spacePath, dir1, dir2
-      const thing = opts.meta.params[0];
-      const space = opts.meta.params[1];
-      const ident = opts.text.split('/');
-      let room = ident[0];
-      const sec = ident[1] ? ident[1].split(':') : [];
-
-      room = room.length == 1 ? `000${room}` : room;
-      room = room.length == 2 ? `00${room}` : room;
-      room = room.length == 3 ? `0${room}` : room;
-
-      const doc = sec[0] ? sec[0].toLowerCase() : 'main';
-      const section = sec[1] ? sec[1].toUpperCase() : 'MAIN';
+      let spacePath;
+      const {params} = opts.meta;
+      const thing = params[0];
+      const space = params[1];
+      const ident = opts.text.split(':');
+      const section = ident[1] ? ident[1].toUpperCase() : 'MAIN';
 
       return new Promise((resolve, reject) => {
 
       switch (thing) {
         case 'docs':
-          spacePath = path.join(__dirname, 'data', space, thing, `${data.text}.feecting`);
+          spacePath = `${this.client.services.space}/${space}/${thing}/${ident[0]}.feecting`;
           break;
         default:
-          dir1 = room.substr(0, room.length - 3) + 'xxx';
-          dir2 = room.substr(0, room.length - 2) + 'xx';
+          const route - ident[0].split('/');
+          const doc = route[1];
+          let room = route[0];
+          room = room.length == 1 ? `000${room}` : room;
+          room = room.length == 2 ? `00${room}` : room;
+          room = room.length == 3 ? `0${room}` : room;
+
+          const dir1 = room.substr(0, room.length - 3) + 'xxx';
+          const dir2 = room.substr(0, room.length - 2) + 'xx';
+
           spacePath = `${this.client.services.space}/${space}/${thing}/${dir1}/${dir2}/${room}/${doc}.feecting`;
           break;
         }
