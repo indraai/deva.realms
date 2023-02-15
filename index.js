@@ -53,24 +53,26 @@ const SPACE = new Deva({
       return new Promise((resolve, reject) => {
 
       switch (thing) {
-        case 'help':
+        case 'docs':
           spacePath = path.join(__dirname, 'data', space, thing, `${data.text}.feecting`);
-          return resolve(fs.readFileSync(spacePath, 'utf8'));
+          break;
         default:
           dir1 = room.substr(0, room.length - 3) + 'xxx';
           dir2 = room.substr(0, room.length - 2) + 'xx';
           spacePath = `${this.client.services.space}/${space}/${thing}/${dir1}/${dir2}/${room}/${doc}.feecting`;
-
-          this.question(`#web get ${spacePath}`).then(result => {
-            const text = result.a.text.toString('utf8').split(`::BEGIN:${section}`)[1].split(`::END:${section}`)[0];
-
-            resolve({
-              text: text,
-              html: text,
-              data: {spacePath},
-            })
-          }).catch(reject)
+          break;
         }
+
+        this.question(`#web get ${spacePath}`).then(result => {
+          const text = result.a.text.toString('utf8').split(`::BEGIN:${section}`)[1].split(`::END:${section}`)[0];
+
+          return resolve({
+            text: text,
+            html: text,
+            data: {spacePath},
+          })
+        }).catch(reject)
+
       });
     },
 
