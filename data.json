@@ -22,10 +22,6 @@
           }
         }
       },
-      "voice": {
-        "speech": "Alex",
-        "speed": 1
-      },
       "profile": {
         "name": "Space Deva",
         "describe": "The Space Deva",
@@ -34,7 +30,8 @@
         "background": "/public/devas/space/background.png",
         "color": "#336699",
         "bgcolor": "#336699",
-        "gender": "M"
+        "gender": "M",
+        "voice": "Brian"
       }
     },
     "vars": {
@@ -47,6 +44,11 @@
         "done": "🟣 DONE",
         "error": "💣 ERROR!",
         "spacefile": "📁 Space File Unknown!"
+      },
+      "context": {
+        "uid": "creating a uid",
+        "status": "viewing the status",
+        "help": "viewing the help"
       }
     }
   }

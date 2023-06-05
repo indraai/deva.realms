@@ -19,7 +19,6 @@ const info = {
 };
 const data_path = path.join(__dirname, 'data.json');
 const {agent,vars} = require(data_path).data;
-
 const SPACE = new Deva({
   info,
   agent,
@@ -72,7 +71,6 @@ const SPACE = new Deva({
         }).catch(reject)
       });
     },
-
     /**************
     func: view
     params: data
@@ -93,7 +91,6 @@ const SPACE = new Deva({
         });
       });
     },
-
     /**************
     func: maps
     params: packet
@@ -102,7 +99,6 @@ const SPACE = new Deva({
     maps(packet) {
       const {params} = packet.q.meta;
       const map = `img:${params[1]}/map/${packet.q.text}`;
-
       return new Promise((resolve, reject) => {
         this.question(`#feecting parse ${map}`).then(parsed => {
           return resolve({
