@@ -1,10 +1,8 @@
 // Copyright (c)2022 Quinn Michaels
 // The Space Deva
 const Deva = require('@indra.ai/deva');
-
 const fs = require('fs');
 const path = require('path');
-
 const package = require('./package.json');
 const info = {
   id: package.id,
@@ -19,7 +17,6 @@ const info = {
   license: package.license,
   copyright: package.copyright,
 };
-
 const data_path = path.join(__dirname, 'data.json');
 const {agent,vars} = require(data_path).data;
 
@@ -60,24 +57,19 @@ const SPACE = new Deva({
           room = room.length == 1 ? `000${room}` : room;
           room = room.length == 2 ? `00${room}` : room;
           room = room.length == 3 ? `0${room}` : room;
-
           const dir1 = room.substr(0, room.length - 3) + 'xxx';
           const dir2 = room.substr(0, room.length - 2) + 'xx';
-
           spacePath = `${this.client.services.space}/${space}/${thing}/${dir1}/${dir2}/${room}/${doc}.feecting`;
           break;
         }
-
         this.question(`#web get ${spacePath}`).then(result => {
           const text = result.a.text.toString('utf8').split(`::BEGIN:${section}`)[1].split(`::END:${section}`)[0];
-
           return resolve({
             text: text,
             html: text,
             data: {spacePath},
           })
         }).catch(reject)
-
       });
     },
 
