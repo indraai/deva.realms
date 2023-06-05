@@ -133,16 +133,6 @@ const SPACE = new Deva({
   },
   methods: {
     /**************
-    method: hash
-    params: packet
-    describe: The hash method exposes the hash function which calls the core
-    hash features to become available to the space Deva.
-    ***************/
-    hash(packet) {
-      return this.hash(packet);
-    },
-
-    /**************
     method: maps
     params: packet
     describe: Call a world file from the space server.
@@ -150,7 +140,6 @@ const SPACE = new Deva({
     maps(packet) {
       return this.func.maps(packet);
     },
-
     /**************
     method: world
     params: packet
@@ -159,7 +148,6 @@ const SPACE = new Deva({
     world(packet) {
       return this.func.view(packet);
     },
-
     /**************
     method: object
     params: packet
@@ -168,7 +156,6 @@ const SPACE = new Deva({
     object(packet) {
       return this.func.view(packet);
     },
-
     /**************
     method: agent
     params: packet
