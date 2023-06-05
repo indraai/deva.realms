@@ -1,7 +1,7 @@
-# AdvDeva
+# Space Deva
 
 The Space Deva that uses deva.space.
 
-`npm i @indra.ai/spacedeva --save-dev`
+`npm i @indra.ai/spacedeva --save`
 
-`const adv = require('@indra.ai/spacedeva')`;
+`const space = require('@indra.ai/spacedeva')`;

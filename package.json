@@ -1,8 +1,12 @@
 {
+  "id": 5610628129852,
   "name": "@indra.ai/spacedeva",
   "version": "0.0.21",
+  "author": "Quinn Michaels",
+  "license": "MIT",
   "description": "The Space Deva",
   "main": "index.js",
+  "copyright": "(c)2023 Quinn Michaels",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,13 +18,11 @@
     "Adventure",
     "Deva"
   ],
-  "author": "Quinn Michaels",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/indraai/SpaceDeva/issues"
   },
   "dependencies": {
-    "@indra.ai/deva": "^1.0.25"
+    "@indra.ai/deva": "^1.1.120"
   },
   "homepage": "https://github.com/indraai/SpaceDeva#readme"
 }
