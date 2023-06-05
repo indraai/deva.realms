@@ -28,15 +28,8 @@ const SPACE = new Deva({
   agent,
   vars,
   utils: {
-    translate(input) {
-      return input.trim();
-    },
-    parse(input) {
-      return input.trim();
-    },
-    process(input) {
-
-    }
+    translate(input) {return input.trim();},parse(input) {return input.trim();},
+    process(input) {return input.trim()}
   },
   listeners: {},
   modules: {},
@@ -55,9 +48,7 @@ const SPACE = new Deva({
       const space = params[1];
       const ident = opts.text.split(':');
       const section = ident[1] ? ident[1].toUpperCase() : 'MAIN';
-
       return new Promise((resolve, reject) => {
-
       switch (thing) {
         case 'docs':
           spacePath = `${this.client.services.space}/${space}/${thing}/${ident[0]}.feecting`;

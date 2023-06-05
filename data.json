@@ -6,8 +6,6 @@
     "agent": {
       "id": 5610628129852,
       "key": "space",
-      "name": "Space Deva",
-      "describe": "The Space Deva",
       "prompt": {
         "emoji": "🪐",
         "text": "space",
@@ -29,10 +27,13 @@
         "speed": 1
       },
       "profile": {
+        "name": "Space Deva",
+        "describe": "The Space Deva",
         "emoji": "/public/devas/space/emoji.png",
         "avatar": "/public/devas/space/avatar.png",
-        "background": "",
-        "describe": "Space Deva",
+        "background": "/public/devas/space/background.png",
+        "color": "#336699",
+        "bgcolor": "#336699",
         "gender": "M"
       }
     },
