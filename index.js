@@ -3,6 +3,8 @@
 const Deva = require('@indra.ai/deva');
 const fs = require('fs');
 const path = require('path');
+const needle = require('needle');
+
 const package = require('./package.json');
 const info = {
   id: package.id,
@@ -38,6 +40,7 @@ const SPACE = new Deva({
     space file from the designated location set in the data.config file.
     ***************/
     getSpaceFile(opts) {
+      const services = this.services();
       let spacePath;
       const {params} = opts.meta;
       const thing = params[0];
@@ -47,7 +50,7 @@ const SPACE = new Deva({
       return new Promise((resolve, reject) => {
       switch (thing) {
         case 'docs':
-          spacePath = `${this.client.services.space}/${space}/${thing}/${ident[0]}.feecting`;
+          spacePath = `${services.global.urls.space}/${space}/${thing}/${ident[0]}.feecting`;
           break;
         default:
           const route = ident[0].split('/');
@@ -58,16 +61,12 @@ const SPACE = new Deva({
           room = room.length == 3 ? `0${room}` : room;
           const dir1 = room.substr(0, room.length - 3) + 'xxx';
           const dir2 = room.substr(0, room.length - 2) + 'xx';
-          spacePath = `${this.client.services.space}/${space}/${thing}/${dir1}/${dir2}/${room}/${doc}.feecting`;
+          spacePath = `${services.global.urls.space}/${space}/${thing}/${dir1}/${dir2}/${room}/${doc}.feecting`;
           break;
         }
-        this.question(`#web get ${spacePath}`).then(result => {
-          const text = result.a.text.toString('utf8').split(`::BEGIN:${section}`)[1].split(`::END:${section}`)[0];
-          return resolve({
-            text: text,
-            html: text,
-            data: {spacePath},
-          })
+        needle('get', spacePath).then(result => {
+          const text = result.body.toString('utf8').split(`::BEGIN:${section}`)[1].split(`::END:${section}`)[0];
+          return resolve(text)
         }).catch(reject)
       });
     },
@@ -81,14 +80,14 @@ const SPACE = new Deva({
     view(data) {
       return new Promise((resolve, reject) => {
         this.func.getSpaceFile(data.q).then(spaceFile => {
-          return this.question(`#feecting parse:${data.q.meta.params[0]}:${data.q.meta.params[1]} ${spaceFile.text}`);
+          return this.question(`#feecting parse:${data.q.meta.params[0]}:${data.q.meta.params[1]} ${spaceFile}`);
         }).then(parsed => {
           return resolve({
             text: parsed.a.text,
             html: parsed.a.html,
             data: parsed.a.data,
           })
-        });
+        }).catch(reject);
       });
     },
     /**************
