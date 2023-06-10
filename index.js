@@ -40,7 +40,6 @@ const SPACE = new Deva({
     space file from the designated location set in the data.config file.
     ***************/
     getSpaceFile(opts) {
-      const services = this.services();
       let spacePath;
       const {params} = opts.meta;
       const thing = params[0];
@@ -50,7 +49,7 @@ const SPACE = new Deva({
       return new Promise((resolve, reject) => {
       switch (thing) {
         case 'docs':
-          spacePath = `${services.global.urls.space}/${space}/${thing}/${ident[0]}.feecting`;
+          spacePath = `${space}/${thing}/${ident[0]}.feecting`;
           break;
         default:
           const route = ident[0].split('/');
@@ -61,13 +60,25 @@ const SPACE = new Deva({
           room = room.length == 3 ? `0${room}` : room;
           const dir1 = room.substr(0, room.length - 3) + 'xxx';
           const dir2 = room.substr(0, room.length - 2) + 'xx';
-          spacePath = `${services.global.urls.space}/${space}/${thing}/${dir1}/${dir2}/${room}/${doc}.feecting`;
+          spacePath = `${space}/${thing}/${dir1}/${dir2}/${room}/${doc}.feecting`;
           break;
         }
-        needle('get', spacePath).then(result => {
-          const text = result.body.toString('utf8').split(`::BEGIN:${section}`)[1].split(`::END:${section}`)[0];
-          return resolve(text)
-        }).catch(reject)
+        if (this.vars.path) {
+          try {
+            const spaceFile = fs.readFileSync(path.join(this.vars.path, spacePath));
+            console.log('SPACEFILE', spaceFile.toString('utf8'));
+            const text = spaceFile.toString('utf8').split(`::BEGIN:${section}`)[1].split(`::END:${section}`)[0];
+            return resolve(text);
+          } catch (e) {
+            return reject(e);
+          }
+        }
+        else {
+          needle('get', `${this.vars.url}/${spacePath}`).then(result => {
+            const text = result.body.toString('utf8').split(`::BEGIN:${section}`)[1].split(`::END:${section}`)[0];
+            return resolve(text)
+          }).catch(reject)
+        }
       });
     },
     /**************
@@ -152,5 +163,11 @@ const SPACE = new Deva({
       return this.func.view(packet);
     },
   },
+  onDone(config) {
+    const services = this.services();
+    this.vars.url = services.global.urls.space;
+    this.vars.path = services.global.paths.space || false;
+    return Promise.resolve(config);
+  }
 });
 module.exports = SPACE

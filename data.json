@@ -49,7 +49,8 @@
         "uid": "creating a uid",
         "status": "viewing the status",
         "help": "viewing the help"
-      }
+      },
+      "url": false
     }
   }
 }
