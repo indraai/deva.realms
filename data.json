@@ -46,9 +46,13 @@
         "spacefile": "📁 Space File Unknown!"
       },
       "context": {
-        "uid": "creating a uid",
-        "status": "viewing the status",
-        "help": "viewing the help"
+        "agent": "Get agent",
+        "object": "Get object",
+        "world": "Get world",
+        "maps": "Get maps",
+        "view": "View data",
+        "docs": "Get docs",
+        "file": "Get file"
       },
       "url": false
     }

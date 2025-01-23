@@ -1,0 +1,8 @@
+{
+  "name": "Arjika Realms Nexus",
+  "describe": "The Nexus definition file for Arjika Realms.",
+  "copyright": "Copyright (c)2023 Quinn Michaels. All rights reserved.",
+  "DATA": [
+    "DataNexus"
+  ]
+}

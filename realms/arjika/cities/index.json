@@ -1,0 +1,14 @@
+{
+  "name": "Arjika Cities",
+  "describe": "The Arjika Cities file that defines cities in the main arjika.",
+  "copyright": "Copyright (c)2023 Quinn Michaels. All rights reserved.",
+  "DATA": [
+    {"ArjikaCity": "ArjikaCity.json"},
+    "Ravenwood",
+    "Emerald City",
+    "Metropolis Prime",
+    "Aurora Glade",
+    "Seaside Cove",
+    "Nebula Grove"
+  ]
+}

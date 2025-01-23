@@ -1,0 +1,11 @@
+{
+  "name": "Arjika Planets",
+  "describe": "The various planets in the Arjika Realms",
+  "copyright": "Copyright (c)2023 Quinn Michaels. All rights reserved.",
+  "DATA": [
+    "Aetherion",
+    "Xarion-7",
+    "Zork",
+    "Everflow"
+  ]
+}

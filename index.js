@@ -21,6 +21,7 @@ const info = {
 };
 const data_path = path.join(__dirname, 'data.json');
 const {agent,vars} = require(data_path).data;
+
 const SPACE = new Deva({
   info,
   agent,
@@ -41,6 +42,7 @@ const SPACE = new Deva({
     space file from the designated location set in the data.config file.
     ***************/
     getSpaceFile(opts) {
+      this.context('file');
       let spacePath;
       const {params} = opts.meta;
       const thing = params[0];
@@ -66,8 +68,7 @@ const SPACE = new Deva({
         }
         if (this.vars.path) {
           try {
-            const spaceFile = fs.readFileSync(path.join(this.vars.path, spacePath));
-            console.log('SPACEFILE', spaceFile.toString('utf8'));
+            const spaceFile = this.fs.readFileSync(path.join(this.vars.path, spacePath));
             const text = spaceFile.toString('utf8').split(`::BEGIN:${section}`)[1].split(`::END:${section}`)[0];
             return resolve(text);
           } catch (e) {
@@ -90,6 +91,7 @@ const SPACE = new Deva({
     feecting for parsing before return.
     ***************/
     view(data) {
+      this.context('view');
       return new Promise((resolve, reject) => {
         this.func.getSpaceFile(data.q).then(spaceFile => {
           return this.question(`#feecting parse:${data.q.meta.params[0]}:${data.q.meta.params[1]} ${spaceFile}`);
@@ -128,30 +130,37 @@ const SPACE = new Deva({
     describe: Call a world file from the space server.
     ***************/
     maps(packet) {
+      this.context('maps');
       return this.func.maps(packet);
     },
+
     /**************
-    method: world
+    method: place
     params: packet
     describe: Call a world file from the space server.
     ***************/
     world(packet) {
+      this.context('world');
       return this.func.view(packet);
     },
+
     /**************
     method: object
     params: packet
     describe: Call an objext file from the space server
     ***************/
     object(packet) {
+      this.context('object');
       return this.func.view(packet);
     },
+
     /**************
     method: agent
     params: packet
     describe: Call an Agent file from the space server
     ***************/
     agent(packet) {
+      this.context('agent');
       return this.func.view(packet);
     },
 
@@ -161,6 +170,7 @@ const SPACE = new Deva({
     describe: Call an Docs file from the space server
     ***************/
     docs(packet) {
+      this.context('docs');
       return this.func.view(packet);
     },
   },

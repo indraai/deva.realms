@@ -22,8 +22,10 @@
     "url": "https://github.com/indraai/SpaceDeva/issues"
   },
   "dependencies": {
-    "@indra.ai/deva": "^1.1.122",
     "needle": "^3.2.0"
   },
-  "homepage": "https://github.com/indraai/SpaceDeva#readme"
+  "homepage": "https://github.com/indraai/SpaceDeva#readme",
+  "devDependencies": {
+    "@indra.ai/deva": "^1.2.11"
+  }
 }

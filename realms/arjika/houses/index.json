@@ -1,0 +1,13 @@
+{
+  "name": "Arjika Houses",
+  "describe": "The Arjika Houses definition file.",
+  "copyright": "Copyright (c)2023 Quinn Michaels. All rights reserved.",
+  "DATA": [
+    "House Indu",
+    "House Strius",
+    "House Romanov",
+    "House Veda",
+    "House Deva",
+    "House Chien"
+  ]
+}
