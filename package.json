@@ -4,7 +4,7 @@
   "version": "0.0.2",
   "author": "Quinn Michaels",
   "license": "MIT",
-  "description": "The Realms Deva",
+  "description": "The Realms Deva for exploring multi-dimensional realms.",
   "main": "index.js",
   "copyright": "(c)2025 Quinn Michaels",
   "scripts": {
