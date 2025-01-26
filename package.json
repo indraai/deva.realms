@@ -1,30 +1,33 @@
 {
   "id": 5610628129852,
-  "name": "@indra.ai/spacedeva",
-  "version": "0.0.31",
+  "name": "@indra.ai/deva.realms",
+  "version": "0.0.1",
   "author": "Quinn Michaels",
   "license": "MIT",
-  "description": "The Space Deva",
+  "description": "The Realms Deva",
   "main": "index.js",
-  "copyright": "(c)2023 Quinn Michaels",
+  "copyright": "(c)2025 Quinn Michaels",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/indraai/SpaceDeva.git"
+    "url": "git+ssh://git@github.com/indraai/deva.realms.git"
   },
   "keywords": [
-    "Adventure",
-    "Deva"
+    "Realms",
+    "Deva",
+    "Deva.space",
+    "Deva.cloud",
+    "Deva.world"
   ],
   "bugs": {
-    "url": "https://github.com/indraai/SpaceDeva/issues"
+    "url": "https://github.com/indraai/deva.realms/issues"
   },
   "dependencies": {
     "needle": "^3.2.0"
   },
-  "homepage": "https://github.com/indraai/SpaceDeva#readme",
+  "homepage": "https://deva.space/devas/realms",
   "devDependencies": {
     "@indra.ai/deva": "^1.2.11"
   }
