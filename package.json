@@ -29,6 +29,6 @@
   },
   "homepage": "https://deva.space/devas/realms",
   "devDependencies": {
-    "@indra.ai/deva": "^1.2.11"
+    "@indra.ai/deva": "^1.4.23"
   }
 }
